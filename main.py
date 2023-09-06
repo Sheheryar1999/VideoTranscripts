@@ -13,22 +13,22 @@ def extract_video_id(youtube_link):
     else:
         return None
 
+def store_text(result):
+
+    with open("storage.txt", "w", encoding= "utf-8") as file:
+        file.write(result)
+    print("Text stored in storage.txt")
+
 
 def main():
-    try:
-        link = input("Enter Video Link: ")
-        id = extract_video_id(link)
-    except Exception as e:
-        print(f"Invalid Input {e}")
 
-    else:
-        # print(id)
-        result = yt.get_transcript(id, languages= ['en'])
-        formatter = TextFormatter()
-        result = formatter.format_transcript(result)
-        with open("storage.txt", "w", encoding= "utf-8") as file:
-            file.write(result)
-        print("Text stored in storage.txt")
+    link = input("Enter Video Link: ")
+    id = extract_video_id(link)
+    print(f"Invalid Input {e}")
+    # print(id)
+    result = yt.get_transcript(id, languages= ['en'])
+    formatter = TextFormatter()
+    result = formatter.format_transcript(result)
 
 
 if __name__ == "__main__":
